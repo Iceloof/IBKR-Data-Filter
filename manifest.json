@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "IBKR Data Filter",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.interactivebrokers.com.au/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {}
+  }
+}
