@@ -35,12 +35,19 @@ function filterAndSave(maxYTD) {
 		}
 	  }
 	});
-	const nextPageButton = document.querySelector('button[aria-label="Next Page"]');
-	if (nextPageButton && flag) {
+	let nextPageButton = document.querySelector('button[aria-label="Next Page"]');
+	const button = document.querySelector('button[aria-label="Next Page"][disabled="disabled"]');
+	if(button) {
+		saveFile();
+	}else if (nextPageButton && flag) {
 		nextPageButton.click();
-		setTimeout(() => filterAndSave(maxYTD), 6000);
-	} else {
-		alert('error or done');
+		setTimeout(() => filterAndSave(maxYTD), 10000);
+	} else if(flag){
+		setTimeout(() => {
+			nextPageButton = document.querySelector('button[aria-label="Next Page"]');
+			nextPageButton.click();
+			setTimeout(() => filterAndSave(maxYTD), 15000);
+		}, 5000);
 	}
 }
 
